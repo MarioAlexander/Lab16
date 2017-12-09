@@ -1,0 +1,26 @@
+﻿@using ReportViewerForMvc;
+@model Lab16Github.Models.Person
+
+@{
+    ViewBag.Title = "Reporte de Personas";
+}
+
+<h2>Reporte de Personas</h2>
+@using (Html.BeginForm("Reporte", "Persona", FormMethod.Post))
+{
+    //TextBox para buscar un registro, en este caso por Nombre
+    <p>
+        Nombre: @Html.TextBox("nombre")
+        <input type="submit" value="Buscar" class="btn btn-default" />
+    </p>
+}
+@if (ViewBag.ReportViewer != null)
+{
+    @Html.ReportViewer(ViewBag.ReportViewer as
+                        Microsoft.Reporting.WebForms.ReportViewer)
+}
+<style>
+    iframe {
+        border-width: 0;
+    }
+</style>
